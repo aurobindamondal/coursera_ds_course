@@ -25,3 +25,5 @@ week1_basic_data_structures/.classpath
 week1_basic_data_structures/.project
 *.cpp
 *.py
+.classpath
+.project
