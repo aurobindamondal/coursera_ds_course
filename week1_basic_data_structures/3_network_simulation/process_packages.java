@@ -29,10 +29,16 @@ class Buffer {
     }
 
     public Response Process(Request request) {
-        // write your code here
-        return new Response(false, -1);
+    	// write your code here
+        //return new Response(false, -1);
+    	if(request.arrival_time >= nextStart) {
+    		nextStart+=request.process_time;
+    		return new Response(false, request.arrival_time);
+    	}else {
+    		return new Response(true, -1);
+    	}
     }
-
+    private int nextStart=0;
     private int size_;
     private ArrayList<Integer> finish_time_;
 }
