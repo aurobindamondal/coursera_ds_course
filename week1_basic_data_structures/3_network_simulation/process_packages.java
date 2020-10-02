@@ -31,14 +31,14 @@ class Buffer {
     public Response Process(Request request) {
     	// write your code here
         //return new Response(false, -1);
-    	if(request.arrival_time >= nextStart) {
-    		nextStart+=request.process_time;
-    		return new Response(false, request.arrival_time);
+    	if(request.arrival_time >= nextStart) { //if anything comes in next available slot or later we can process that
+    		nextStart+=request.process_time; //update next slot by adding process time to it
+    		return new Response(false, request.arrival_time); //return response as not dropped and when it picked up
     	}else {
-    		return new Response(true, -1);
+    		return new Response(true, -1); //if the packet arrives before the next slot available drop it
     	}
     }
-    private int nextStart=0;
+    private int nextStart=0; //just to keep track of the finish of current packet processing i.e, next available slot
     private int size_;
     private ArrayList<Integer> finish_time_;
 }
